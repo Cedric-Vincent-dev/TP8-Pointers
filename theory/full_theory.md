@@ -194,3 +194,142 @@ Points pédagogiques à retenir
 
 
 
+
+**2.3. Les segments mémoire d’un programme**
+
+**Explication détaillée**
+
+Lorsqu’un programme est exécuté, son espace mémoire est divisé en plusieurs segments distincts.  
+Chaque segment a un rôle précis :
+
+1. **Code segment (text segment)**  
+   - Contient les instructions machine du programme.  
+   - Lecture seule (on ne peut pas modifier le code en cours d’exécution).  
+   - Protégé contre l’écriture pour éviter les erreurs ou attaques.
+
+2. **Data segment**  
+   - Contient les variables globales **initialisées**.  
+   - Exemple : `int globalNumber = 10;`
+
+3. **BSS segment**  
+   - Contient les variables globales **non initialisées**.  
+   - Exemple : `int globalCounter;` (valeur par défaut = 0).  
+
+4. **Heap**  
+   - Zone pour l’allocation dynamique.  
+   - Gérée par le programmeur (`malloc/free` en C, `new/delete` en C++).  
+
+5. **Stack**  
+   - Contient les variables locales et les appels de fonction.  
+   - Gérée automatiquement par le compilateur.  
+
+
+
+**Exemple en **C****
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Variable globale initialisée (data segment)
+int globalNumber = 10;
+
+// Variable globale non initialisée (BSS segment)
+int globalCounter;
+
+int main(void) {
+    // Variable locale (stack)
+    int stackValue = 5;
+
+    // Allocation dynamique (heap)
+    int *heapValue = malloc(sizeof(int));
+    if (heapValue == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+    *heapValue = 20;
+
+    // Affichage des valeurs et adresses
+    printf("Global initialized (data): value=%d, address=%p\n", globalNumber, (void*)&globalNumber);
+    printf("Global uninitialized (BSS): value=%d, address=%p\n", globalCounter, (void*)&globalCounter);
+    printf("Local (stack): value=%d, address=%p\n", stackValue, (void*)&stackValue);
+    printf("Heap: value=%d, address=%p\n", *heapValue, (void*)heapValue);
+
+    free(heapValue);
+    return 0;
+}
+```
+
+**Explications**
+- `globalNumber` → data segment  
+- `globalCounter` → BSS segment  
+- `stackValue` → stack  
+- `heapValue` → heap  
+
+
+
+**Exemple en **C++****
+
+```cpp
+#include <iostream>
+
+// Variable globale initialisée (data segment)
+int globalNumber{10};
+
+// Variable globale non initialisée (BSS segment)
+int globalCounter;
+
+int main() {
+    // Variable locale (stack)
+    int stackValue{5};
+
+    // Allocation dynamique (heap)
+    int *heapValue{new int(20)};
+
+    // Affichage des valeurs et adresses
+    std::cout << "Global initialized (data): value=" << globalNumber 
+              << ", address=" << &globalNumber << '\n';
+
+    std::cout << "Global uninitialized (BSS): value=" << globalCounter 
+              << ", address=" << &globalCounter << '\n';
+
+    std::cout << "Local (stack): value=" << stackValue 
+              << ", address=" << &stackValue << '\n';
+
+    std::cout << "Heap: value=" << *heapValue 
+              << ", address=" << heapValue << '\n';
+
+    delete heapValue;
+    return 0;
+}
+```
+
+
+
+**Résultat attendu (exemple de sortie)**
+
+```
+Global initialized (data): value=10, address=0x601050
+Global uninitialized (BSS): value=0, address=0x601060
+Local (stack): value=5, address=0x7ffee3bff4ac
+Heap: value=20, address=0x600003e0
+```
+
+*(les adresses varient selon l’exécution, mais on voit bien que chaque segment est distinct)*
+
+
+
+**Points pédagogiques à retenir**
+- Le programme est divisé en **segments mémoire** bien définis.  
+- Les variables globales initialisées vont dans le **data segment**.  
+- Les variables globales non initialisées vont dans le **BSS segment**.  
+- Les variables locales sont sur la **stack**.  
+- Les allocations dynamiques sont sur la **heap**.  
+- Comprendre cette organisation est essentiel pour maîtriser la gestion mémoire et éviter les erreurs.
+
+
+
+
+
+
+
