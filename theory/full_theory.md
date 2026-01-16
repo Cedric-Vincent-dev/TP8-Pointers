@@ -31,7 +31,7 @@ Comprendre la mémoire, c’est comprendre **où** les données sont stockées e
 
 
 
-Exemple concret en **C23**
+Exemple concret en **C**
 
 ```c
 #include <stdio.h>
