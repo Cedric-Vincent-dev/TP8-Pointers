@@ -92,7 +92,7 @@ La mémoire d’un programme est divisée en plusieurs zones. Les deux plus impo
 - Les variables disparaissent automatiquement à la fin de la fonction.  
 - Risque : **stack overflow** si trop de données sont stockées.
 
----
+
 
 **La Heap (tas)**  
 - Zone mémoire gérée manuellement par le programmeur.  
