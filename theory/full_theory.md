@@ -460,8 +460,7 @@ New value of userNumber after modification: 75
 - Exemple : `*p = 20;` modifie la valeur de la variable pointée.
 
 **3. Le symbole `$`**
-- **N’existe pas en C/C++.**  
-- Ton tuteur l’a ajouté volontairement pour vérifier que tu sais distinguer la syntaxe réelle de la syntaxe inventée.  
+- **N’existe pas en C/C++.**   
 - En C et C++, `$` n’a aucune signification.  
 
 
