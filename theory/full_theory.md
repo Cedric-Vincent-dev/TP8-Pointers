@@ -415,7 +415,7 @@ int main() {
 ```
 
 **Explications**
-- Même logique qu’en C23, mais syntaxe modernisée (`{}` pour initialisation).  
+- Même logique qu’en C, mais syntaxe modernisée (`{}` pour initialisation).  
 - `std::cout` est utilisé pour afficher les résultats.  
 - Le pointeur permet de lire et modifier la variable originale.
 
