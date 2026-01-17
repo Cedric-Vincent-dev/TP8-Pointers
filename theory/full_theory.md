@@ -54,7 +54,7 @@ Explications
 - `userNumber` contient la valeur **42**.  
 - `&userNumber` donne l’adresse mémoire où cette valeur est stockée.  
 - `%p` est le format utilisé pour afficher une adresse en C.  
-- `(void*)&userNumber` est une conversion explicite pour respecter les standards modernes (C23).
+- `(void*)&userNumber` est une conversion explicite pour respecter les standards modernes (C).
 
 
 
