@@ -526,8 +526,8 @@ int main() {
 ```
 
 **Explications**
-- Même logique qu’en C23, mais syntaxe modernisée (`{}` pour initialisation).  
-- `$` est également invalide en C++20.  
+- Même logique qu’en C, mais syntaxe modernisée (`{}` pour initialisation).  
+- `$` est également invalide en C++.  
 
 
 
@@ -548,6 +548,9 @@ New value of userNumber: 25
 - `*` → permet de déclarer un pointeur et d’accéder à la valeur pointée.  
 - `$` → n’existe pas en C/C++, il faut le signaler explicitement.  
 - La maîtrise de `*` et `&` est indispensable pour comprendre les pointeurs.  
+
+
+
 
 
 
